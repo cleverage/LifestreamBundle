@@ -1,1 +1,13 @@
 Hello!
+
+<ul>
+{% for track in tracks  %}
+    <li>
+        {% if track.image %}
+            <img src="{{ track.image }}" alt="{{ track.artist }}">
+        {% endif %}
+        
+        <a href="{{ track.url }}">{{ track.artist }} - {{ track.name }}</a>
+    </li>
+{% endfor %}
+</ul>

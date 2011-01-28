@@ -8,6 +8,10 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('LifestreamBundle:Default:index.html.twig');
+        $lastfm = $this->get('lifestream.lastfm.api');
+        
+        return $this->render('LifestreamBundle:Default:index.html.twig', array(
+            'tracks' => $lastfm->getRecentTracks()
+        ));
     }
 }

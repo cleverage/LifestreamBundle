@@ -9,6 +9,7 @@ namespace Application\LifestreamBundle;
  */
 class LastFmAPI {
     
+    const API_GATEWAY = 'http://ws.audioscrobbler.com/2.0/';
     /**
      * API Key
      *
@@ -42,5 +43,29 @@ class LastFmAPI {
         $this->secret = $secret;
         $this->username = $username;
         $this->password = $password;
+    }
+    
+    public function getRecentTracks(array $options = array()) {
+        static $method = 'user.getrecenttracks';
+        
+        $parameters = array_merge($options, $this->getInitialRequestParameters());
+        $parameters['method'] = $method;
+        
+        $request = sprintf('%s?%s', self::API_GATEWAY, http_build_query($parameters));
+        
+        $results = file_get_contents($request);
+        $normalizer = new LastFmTrackListNormalizer();
+        
+        return $normalizer->normalize(new \SimpleXMLElement($results), 'array', null);
+    }
+    
+    
+    protected function getInitialRequestParameters($signed = false)
+    {
+        
+        return array(
+            'user' => $this->username,
+            'api_key' => $this->key
+        );
     }
 }
