@@ -1,5 +1,5 @@
 <?php
-namespace Application\LifestreamBundle;
+namespace Application\LifestreamBundle\Service;
 
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;

@@ -1,7 +1,7 @@
 <?php
-namespace Application\LifestreamBundle;
+namespace Application\LifestreamBundle\Service;
 
-use Application\LifestreamBundle\ServiceInterface;
+use Application\LifestreamBundle\Service\ServiceInterface;
 
 /**
  * LastFmAPI

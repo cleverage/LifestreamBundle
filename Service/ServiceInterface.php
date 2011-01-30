@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\LifestreamBundle;
+namespace Application\LifestreamBundle\Service;
 
 interface ServiceInterface {
   
