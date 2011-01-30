@@ -1,13 +1,15 @@
 <?php
 namespace Application\LifestreamBundle;
 
+use Application\LifestreamBundle\ServiceInterface;
+
 /**
  * LastFmAPI
  *
  * @package Application\LifestreamBundle
  * @author Romain "palleas" Pouclet <me@palleas.com>
  */
-class LastFmAPI {
+class LastFmAPI implements ServiceInterface {
     
     const API_GATEWAY = 'http://ws.audioscrobbler.com/2.0/';
     /**
@@ -59,6 +61,13 @@ class LastFmAPI {
         return $normalizer->normalize(new \SimpleXMLElement($results), 'array', null);
     }
     
+    public function getRecents() {
+        return $this->getRecentTracks();
+    }
+
+    public function getProfileURL() {
+      return 'http://www.lastfm.fr/user/' . $this->username;
+    }
     
     protected function getInitialRequestParameters($signed = false)
     {

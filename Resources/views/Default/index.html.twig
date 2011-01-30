@@ -1,13 +1,5 @@
-Hello!
+<h1>Lifestream</h1>
 
-<ul>
-{% for track in tracks  %}
-    <li>
-        {% if track.image %}
-            <img src="{{ track.image }}" alt="{{ track.artist }}">
-        {% endif %}
-        
-        <a href="{{ track.url }}">{{ track.artist }} - {{ track.name }}</a>
-    </li>
+{% for service in services  %}
+    {% render "LifestreamBundle:Default:show" with { 'service' : service } %}
 {% endfor %}
-</ul>
