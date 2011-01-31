@@ -40,6 +40,14 @@ class LastFmAPI implements ServiceInterface {
      */
     protected $password;
     
+    /**
+     * Constructor
+     *
+     * @param string $key 
+     * @param string $secret 
+     * @param string $username 
+     * @param string $password 
+     */
     public function __construct($key, $secret, $username, $password) {
         $this->key = $key;
         $this->secret = $secret;
@@ -47,6 +55,12 @@ class LastFmAPI implements ServiceInterface {
         $this->password = $password;
     }
     
+    /**
+     * Returns recent played tracks
+     *
+     * @param array $options An array of options
+     * @return array
+     */
     public function getRecentTracks(array $options = array()) {
         static $method = 'user.getrecenttracks';
         
@@ -61,14 +75,26 @@ class LastFmAPI implements ServiceInterface {
         return $normalizer->normalize(new \SimpleXMLElement($results), 'array', null);
     }
     
+    /**
+     * {@inheritdoc}
+     */
     public function getRecents() {
         return $this->getRecentTracks();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getProfileURL() {
       return 'http://www.lastfm.fr/user/' . $this->username;
     }
     
+    /**
+     * Returns an array of request's  mandatory parameters
+     *
+     * @param boolean $signed 
+     * @return array
+     */
     protected function getInitialRequestParameters($signed = false)
     {
         

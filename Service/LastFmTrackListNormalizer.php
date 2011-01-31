@@ -5,7 +5,10 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class LastFmTrackListNormalizer implements NormalizerInterface {
-
+    
+    /**
+     * {@inheritdoc}
+     */
     public function normalize($object, $format, $properties = null) {
         $tracks = array();
         
@@ -21,18 +24,30 @@ class LastFmTrackListNormalizer implements NormalizerInterface {
         return $tracks;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function denormalize($data, $class, $format = null) {
         
     }
-
+    
+    /**
+     * {@inheritdoc}
+     */
     public function supports(\ReflectionClass $class, $format = null) {
         
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setSerializer(SerializerInterface $serializer) {
         
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getSerializer() {
         
     }
