@@ -16,10 +16,12 @@ class DefaultController extends Controller {
     public function showAction($service) {
         
         $handler = $this->get(sprintf('lifestream.%s.api', $service));
+        $recents = $handler->getRecents();
         
-        return $this->render('LifestreamBundle:Default:show.html.twig', array(
-            'service' => $service,
-            'items' => $handler->getRecents()
-        ));
+        return $this->render(sprintf('LifestreamBundle:Default:show_%s.html.twig', $service), 
+        array(
+            'service' => $service, 
+            'recents' => $recents
+            ));
     }
 }
