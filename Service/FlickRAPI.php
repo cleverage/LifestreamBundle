@@ -3,16 +3,17 @@ namespace Application\LifestreamBundle\Service;
 
 use Application\LifestreamBundle\Service\ServiceInterface;
 
+use Flickr\Account;
 
 /**
 * 
 */
 class FlickRAPI implements ServiceInterface
 {
+    const API_GATEWAY = 'http://api.flickr.com/services/rest';
+    
     protected $key;
-    
-    protected $secret;
-    
+
     protected $userId;
     
     public function __construct($key, $user_id) {
@@ -24,7 +25,26 @@ class FlickRAPI implements ServiceInterface
      * {@inheritdoc}
      */
     public function getRecents() {
-        return array();
+        $url = self::API_GATEWAY;
+        
+        $photos = array();
+        
+        $parameters = $this->getInitialRequestParameters();
+        $parameters['method'] = 'flickr.people.getPublicPhotos';
+        $parameters['extras'] = 'url_sq';
+        
+        $results = file_get_contents($url.'?'.http_build_query($parameters));
+        $tree = new \SimpleXMLElement($results);
+
+        foreach ($tree->photos->photo as $photo)
+        {
+            $photos[] = array(
+                'url' => $photo['url_sq'],
+                'title' => $photo['title']
+            );
+        }
+        
+        return $photos;
     }
 
     /**
@@ -33,4 +53,13 @@ class FlickRAPI implements ServiceInterface
     public function getProfileURL() {
         return null;
     }
+    
+    protected function getInitialRequestParameters($signed = false)
+    {
+        return array(
+            'user_id' => $this->userId,
+            'api_key' => $this->key
+        );
+    }
+    
 }

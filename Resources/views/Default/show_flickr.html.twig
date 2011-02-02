@@ -1,1 +1,10 @@
-coucou flickr
+<section class="recents flickr">
+    <h2>My Photostream</h2>
+    {% for photo in recents %}
+        <figure>
+            <img src="{{ photo.url }}" alt="{{ photo.title }}">
+            <figcaption>{{ photo.title }}</figcaption>
+        </figure>
+    {% endfor %}
+    </ul>
+</section>
