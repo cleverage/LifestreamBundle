@@ -9,7 +9,7 @@ class DefaultController extends Controller {
     public function indexAction() {
 
         return $this->render('LifestreamBundle:Default:index.html.twig', array(
-            'services' => array('lastfm')
+            'services' => array('lastfm', 'flickr')
         ));
     }
     
