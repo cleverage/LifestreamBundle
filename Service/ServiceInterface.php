@@ -1,6 +1,6 @@
 <?php
 
-namespace Palleas\LifestreamBundle\Service;
+namespace Cleverage\LifestreamBundle\Service;
 
 interface ServiceInterface 
 {

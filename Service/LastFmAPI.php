@@ -1,13 +1,13 @@
 <?php
-namespace Palleas\LifestreamBundle\Service;
+namespace Cleverage\LifestreamBundle\Service;
 
-use Palleas\LifestreamBundle\Service\ServiceInterface;
+use Cleverage\LifestreamBundle\Service\ServiceInterface;
 
 /**
  * LastFmAPI
  *
  * @package Application\LifestreamBundle
- * @author Romain "palleas" Pouclet <me@palleas.com>
+ * @author Romain Pouclet
  */
 class LastFmAPI implements ServiceInterface 
 {

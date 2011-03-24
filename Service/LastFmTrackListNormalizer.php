@@ -1,5 +1,5 @@
 <?php
-namespace Palleas\LifestreamBundle\Service;
+namespace Cleverage\LifestreamBundle\Service;
 
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;

@@ -1,7 +1,7 @@
 <?php
-namespace Palleas\LifestreamBundle\Service;
+namespace Cleverage\LifestreamBundle\Service;
 
-use Palleas\LifestreamBundle\Service\ServiceInterface;
+use Cleverage\LifestreamBundle\Service\ServiceInterface;
 
 use Flickr\Account;
 

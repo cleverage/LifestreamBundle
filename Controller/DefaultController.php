@@ -1,6 +1,6 @@
 <?php
 
-namespace Palleas\LifestreamBundle\Controller;
+namespace Cleverage\LifestreamBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +13,7 @@ class DefaultController extends Controller
 
         $this->get('lifestream');
 
-        return $this->render('PalleasLifestreamBundle:Default:index.html.twig', array(
+        return $this->render('CleverageLifestreamBundle:Default:index.html.twig', array(
                 'services' => array('lastfm', 'flickr')
                 ));
     }
@@ -24,7 +24,7 @@ class DefaultController extends Controller
         $handler = $this->get(sprintf('lifestream.%s', $service));
         $recents = $handler->getRecents();
 
-        $response = $this->render(sprintf('PalleasLifestreamBundle:Default:show_%s.html.twig', $service), 
+        $response = $this->render(sprintf('CleverageLifestreamBundle:Default:show_%s.html.twig', $service), 
         array(
             'service' => $service, 
             'recents' => $recents

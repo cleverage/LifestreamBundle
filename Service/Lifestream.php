@@ -1,6 +1,6 @@
 <?php
 
-namespace Palleas\LifestreamBundle\Service;
+namespace Cleverage\LifestreamBundle\Service;
 
 /**
  * Handle all the lifestream (allow merge between all the data stream)
