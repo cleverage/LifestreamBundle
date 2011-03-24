@@ -52,7 +52,7 @@ class LastFmAPI implements ServiceInterface
         $parameters['method'] = $method;
         
         $request = sprintf('%s?%s', self::API_GATEWAY, http_build_query($parameters));
-        
+
         $results = file_get_contents($request);
         $normalizer = new LastFmTrackListNormalizer();
         

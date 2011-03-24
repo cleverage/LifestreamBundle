@@ -18,29 +18,4 @@ class PalleasLifestreamExtension extends Extension
     {
         return 'palleas_lifestream';
     }
-
-    /**
-     * @depreciated ???
-     */
-    protected function configServices(array $services, ContainerBuilder $container) 
-    {
-        foreach ($services as $name => $arguments) 
-        {
-            $this->configService($name, $arguments, $container);
-        }
-    }
-    
-    /**
-     * @depreciated ???
-     */
-    protected function configService($name, $arguments, ContainerBuilder $container) 
-    {
-        $definitionName = sprintf('lifestream.%s.api', strtolower($name));
-        $definition = $container->getDefinition($definitionName);
-        
-        foreach ($arguments as $argument) 
-        {
-            $definition->addArgument($argument);
-        }
-    }
 }
