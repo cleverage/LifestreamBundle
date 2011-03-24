@@ -12,9 +12,17 @@
 
     <services>
         <service id="lifestream" class="%global.class%">
-            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
-        <service id="lifestream.lastfm" class="%lastfm.class%" />
+
+
+        <service id="lifestream.lastfm" class="%lastfm.class%">
+            <argument>%lastfm.key%</argument>
+            <argument>%lastfm.secret%</argument>
+            <argument>%lastfm.username%</argument>
+            <argument>%lastfm.password%</argument>
+        </service>
+        
         <service id="lifestream.flickr" class="%flickr.class%" />
     </services>
 </container>

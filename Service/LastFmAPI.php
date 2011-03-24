@@ -20,13 +20,6 @@ class LastFmAPI implements ServiceInterface
     protected $key;
     
     /**
-     * API Secret
-     *
-     * @var string
-     */
-    protected $secret;
-    
-    /**
      * LastFM account username
      *
      * @var string
@@ -34,26 +27,15 @@ class LastFmAPI implements ServiceInterface
     protected $username;
     
     /**
-     * LastFM account password
-     *
-     * @var string
-     */
-    protected $password;
-    
-    /**
      * Constructor
      *
      * @param string $key 
-     * @param string $secret 
      * @param string $username 
-     * @param string $password 
      */
-    public function __construct($key, $secret, $username, $password) 
+    public function __construct($key, $username) 
     {
         $this->key = $key;
-        $this->secret = $secret;
         $this->username = $username;
-        $this->password = $password;
     }
     
     /**
