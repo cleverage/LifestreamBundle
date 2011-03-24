@@ -8,6 +8,10 @@
         <parameter key="global.class">Palleas\LifestreamBundle\Service\Lifestream</parameter>
         <parameter key="lastfm.class">Palleas\LifestreamBundle\Service\LastFmAPI</parameter>
         <parameter key="flickr.class">Palleas\LifestreamBundle\Service\FlickRAPI</parameter>
+
+        <!-- generic api key, plz use your own as this one may become unavailable -->
+        <parameter key="lastfm.key">b25b959554ed76058ac220b7b2e0a026</parameter>
+        <parameter key="lastfm.username">Palleas</parameter>
     </parameters>
 
     <services>
@@ -18,9 +22,7 @@
 
         <service id="lifestream.lastfm" class="%lastfm.class%">
             <argument>%lastfm.key%</argument>
-            <argument>%lastfm.secret%</argument>
             <argument>%lastfm.username%</argument>
-            <argument>%lastfm.password%</argument>
         </service>
         
         <service id="lifestream.flickr" class="%flickr.class%" />
