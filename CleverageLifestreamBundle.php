@@ -1,6 +1,6 @@
 <?php
 
-namespace Cleverage\LifestreamBundle;
+namespace Cleverage\Bundle\LifestreamBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

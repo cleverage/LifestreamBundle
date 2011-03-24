@@ -1,13 +1,13 @@
 <?php
 
-namespace Cleverage\LifestreamBundle\Controller;
+namespace Cleverage\Bundle\LifestreamBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller 
+class DefaultController extends Controller
 {
-    public function indexAction() 
+    public function indexAction()
     {
         $request = $this->get('request');
 
@@ -18,15 +18,15 @@ class DefaultController extends Controller
                 ));
     }
 
-    public function showAction($service) 
+    public function showAction($service)
     {
 
         $handler = $this->get(sprintf('lifestream.%s', $service));
         $recents = $handler->getRecents();
 
-        $response = $this->render(sprintf('CleverageLifestreamBundle:Default:show_%s.html.twig', $service), 
+        $response = $this->render(sprintf('CleverageLifestreamBundle:Default:show_%s.html.twig', $service),
         array(
-            'service' => $service, 
+            'service' => $service,
             'recents' => $recents
             ));
 

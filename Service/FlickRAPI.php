@@ -1,40 +1,40 @@
 <?php
-namespace Cleverage\LifestreamBundle\Service;
+namespace Cleverage\Bundle\LifestreamBundle\Service;
 
-use Cleverage\LifestreamBundle\Service\ServiceInterface;
+use Cleverage\Bundle\LifestreamBundle\Service\ServiceInterface;
 
 use Flickr\Account;
 
 /**
-* 
+*
 */
 class FlickRAPI implements ServiceInterface
 {
     const API_GATEWAY = 'http://api.flickr.com/services/rest';
-    
+
     protected $key;
 
     protected $userId;
-    
-    public function __construct($key, $user_id) 
+
+    public function __construct($key, $user_id)
     {
         $this->key = $key;
         $this->userId = $user_id;
     }
-    
+
     /**
      * {@inheritdoc}
      */
-    public function getRecents() 
+    public function getRecents()
     {
         $url = self::API_GATEWAY;
-        
+
         $photos = array();
-        
+
         $parameters = $this->getInitialRequestParameters();
         $parameters['method'] = 'flickr.people.getPublicPhotos';
         $parameters['extras'] = 'url_sq';
-        
+
         $results = file_get_contents($url.'?'.http_build_query($parameters));
         $tree = new \SimpleXMLElement($results);
 
@@ -49,18 +49,18 @@ class FlickRAPI implements ServiceInterface
                 'title' => $photo['title']
             );
         }
-        
+
         return $photos;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getProfileURL() 
+    public function getProfileURL()
     {
         return null;
     }
-    
+
     protected function getInitialRequestParameters($signed = false)
     {
         return array(

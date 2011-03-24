@@ -1,11 +1,11 @@
 <?php
 
-namespace Cleverage\LifestreamBundle\Service;
+namespace Cleverage\Bundle\LifestreamBundle\Service;
 
 /**
  * Handle all the lifestream (allow merge between all the data stream)
  */
-class Lifestream 
+class Lifestream
 {
 	/**
      * Doctrine EntityManager
@@ -17,7 +17,7 @@ class Lifestream
     /**
      * Constructor
      */
-    public function __construct(\Doctrine\ORM\EntityManager $em) 
+    public function __construct(\Doctrine\ORM\EntityManager $em)
     {
     	$this->em = $em;
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Cleverage\LifestreamBundle\Service;
+namespace Cleverage\Bundle\LifestreamBundle\Service;
 
-interface ServiceInterface 
+interface ServiceInterface
 {
   /**
    * Returns a list of recents items from related service
@@ -10,7 +10,7 @@ interface ServiceInterface
    * @return array
    */
   public function getRecents();
-  
+
   /**
    * Returns profile's url (ex: http://lastfm.com/user/palleas)
    *

@@ -1,7 +1,7 @@
 <?php
-namespace Cleverage\LifestreamBundle\Service;
+namespace Cleverage\Bundle\LifestreamBundle\Service;
 
-use Cleverage\LifestreamBundle\Service\ServiceInterface;
+use Cleverage\Bundle\LifestreamBundle\Service\ServiceInterface;
 
 /**
  * LastFmAPI
@@ -9,7 +9,7 @@ use Cleverage\LifestreamBundle\Service\ServiceInterface;
  * @package Application\LifestreamBundle
  * @author Romain Pouclet
  */
-class LastFmAPI implements ServiceInterface 
+class LastFmAPI implements ServiceInterface
 {
     const API_GATEWAY = 'http://ws.audioscrobbler.com/2.0/';
     /**
@@ -18,51 +18,51 @@ class LastFmAPI implements ServiceInterface
      * @var string
      */
     protected $key;
-    
+
     /**
      * LastFM account username
      *
      * @var string
      */
     protected $username;
-    
+
     /**
      * Constructor
      *
-     * @param string $key 
-     * @param string $username 
+     * @param string $key
+     * @param string $username
      */
-    public function __construct($key, $username) 
+    public function __construct($key, $username)
     {
         $this->key = $key;
         $this->username = $username;
     }
-    
+
     /**
      * Returns recent played tracks
      *
      * @param array $options An array of options
      * @return array
      */
-    public function getRecentTracks(array $options = array()) 
+    public function getRecentTracks(array $options = array())
     {
         static $method = 'user.getrecenttracks';
-        
+
         $parameters = array_merge($options, $this->getInitialRequestParameters());
         $parameters['method'] = $method;
-        
+
         $request = sprintf('%s?%s', self::API_GATEWAY, http_build_query($parameters));
 
         $results = file_get_contents($request);
         $normalizer = new LastFmTrackListNormalizer();
-        
+
         return $normalizer->normalize(new \SimpleXMLElement($results), 'array', null);
     }
-    
+
     /**
      * {@inheritdoc}
      */
-    public function getRecents() 
+    public function getRecents()
     {
         return $this->getRecentTracks();
     }
@@ -70,15 +70,15 @@ class LastFmAPI implements ServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function getProfileURL() 
+    public function getProfileURL()
     {
       return 'http://www.lastfm.fr/user/' . $this->username;
     }
-    
+
     /**
      * Returns an array of request's  mandatory parameters
      *
-     * @param boolean $signed 
+     * @param boolean $signed
      * @return array
      */
     protected function getInitialRequestParameters($signed = false)
