@@ -1,7 +1,7 @@
 <?php
-namespace Cleverage\Bundle\LifestreamBundle\Service;
+namespace CleverAge\Bundle\LifestreamBundle\Service;
 
-use Cleverage\Bundle\LifestreamBundle\Service\ServiceInterface;
+use CleverAge\Bundle\LifestreamBundle\Service\ServiceInterface;
 
 /**
  * LastFmAPI

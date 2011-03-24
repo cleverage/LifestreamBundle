@@ -5,9 +5,9 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="lifestream.global.class">Cleverage\LifestreamBundle\Service\Lifestream</parameter>
-        <parameter key="lifestream.lastfm.class">Cleverage\LifestreamBundle\Service\LastFmAPI</parameter>
-        <parameter key="lifestream.flickr.class">Cleverage\LifestreamBundle\Service\FlickRAPI</parameter>
+        <parameter key="lifestream.global.class">CleverAge\Bundle\LifestreamBundle\Service\Lifestream</parameter>
+        <parameter key="lifestream.lastfm.class">CleverAge\Bundle\LifestreamBundle\Service\LastFmAPI</parameter>
+        <parameter key="lifestream.flickr.class">CleverAge\Bundle\LifestreamBundle\Service\FlickRAPI</parameter>
 
         <!-- generic api key, plz use your own as this one may become unavailable -->
         <parameter key="lifestream.lastfm.key">b25b959554ed76058ac220b7b2e0a026</parameter>
@@ -27,7 +27,7 @@
             <argument>%lifestream.lastfm.key%</argument>
             <argument>%lifestream.lastfm.username%</argument>
         </service>
-        
+
         <service id="lifestream.flickr" class="%lifestream.flickr.class%">
             <argument>%lifestream.flickr.key%</argument>
             <argument>%lifestream.flickr.user_id%</argument>

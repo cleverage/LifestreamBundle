@@ -1,6 +1,6 @@
 <?php
 
-namespace Cleverage\Bundle\LifestreamBundle\Service;
+namespace CleverAge\Bundle\LifestreamBundle\Service;
 
 interface ServiceInterface
 {

@@ -1,8 +1,8 @@
 <?php
-namespace Cleverage\Bundle\LifestreamBundle\Tests;
+namespace CleverAge\Bundle\LifestreamBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
-use Cleverage\Bundle\LifestreamBundle\Service\LastFmAPI;
+use CleverAge\Bundle\LifestreamBundle\Service\LastFmAPI;
 
 require __DIR__.'/../../../autoload.php';
 

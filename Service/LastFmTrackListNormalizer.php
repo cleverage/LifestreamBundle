@@ -1,5 +1,5 @@
 <?php
-namespace Cleverage\Bundle\LifestreamBundle\Service;
+namespace CleverAge\Bundle\LifestreamBundle\Service;
 
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;

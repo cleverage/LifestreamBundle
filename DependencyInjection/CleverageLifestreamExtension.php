@@ -1,12 +1,12 @@
 <?php
-namespace Cleverage\Bundle\LifestreamBundle\DependencyInjection;
+namespace CleverAge\Bundle\LifestreamBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
-class CleverageLifestreamExtension extends Extension
+class CleverAgeLifestreamExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -16,6 +16,6 @@ class CleverageLifestreamExtension extends Extension
 
     public function getAlias()
     {
-        return 'cleverage_lifestream';
+        return 'clever_age_lifestream';
     }
 }

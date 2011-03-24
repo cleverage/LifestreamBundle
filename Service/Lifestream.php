@@ -1,6 +1,6 @@
 <?php
 
-namespace Cleverage\Bundle\LifestreamBundle\Service;
+namespace CleverAge\Bundle\LifestreamBundle\Service;
 
 /**
  * Handle all the lifestream (allow merge between all the data stream)
