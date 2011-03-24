@@ -1,15 +1,16 @@
 <?php
-namespace Application\LifestreamBundle\Service;
+namespace Palleas\LifestreamBundle\Service;
 
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class LastFmTrackListNormalizer implements NormalizerInterface {
-    
+class LastFmTrackListNormalizer implements NormalizerInterface 
+{
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format, $properties = null) {
+    public function normalize($object, $format, $properties = null) 
+    {
         $tracks = array();
         
         foreach ($object->recenttracks->track as $node) {
@@ -27,28 +28,28 @@ class LastFmTrackListNormalizer implements NormalizerInterface {
     /**
      * {@inheritdoc}
      */
-    public function denormalize($data, $class, $format = null) {
-        
+    public function denormalize($data, $class, $format = null) 
+    {
     }
     
     /**
      * {@inheritdoc}
      */
-    public function supports(\ReflectionClass $class, $format = null) {
-        
+    public function supports(\ReflectionClass $class, $format = null) 
+    {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setSerializer(SerializerInterface $serializer) {
-        
+    public function setSerializer(SerializerInterface $serializer) 
+    {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getSerializer() {
-        
+    public function getSerializer() 
+    {
     }
 }

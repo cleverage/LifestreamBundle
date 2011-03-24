@@ -1,7 +1,7 @@
 <?php
-namespace Application\LifestreamBundle\Service;
+namespace Palleas\LifestreamBundle\Service;
 
-use Application\LifestreamBundle\Service\ServiceInterface;
+use Palleas\LifestreamBundle\Service\ServiceInterface;
 
 use Flickr\Account;
 
@@ -16,7 +16,8 @@ class FlickRAPI implements ServiceInterface
 
     protected $userId;
     
-    public function __construct($key, $user_id) {
+    public function __construct($key, $user_id) 
+    {
         $this->key = $key;
         $this->userId = $user_id;
     }
@@ -24,7 +25,8 @@ class FlickRAPI implements ServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function getRecents() {
+    public function getRecents() 
+    {
         $url = self::API_GATEWAY;
         
         $photos = array();
@@ -50,7 +52,8 @@ class FlickRAPI implements ServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function getProfileURL() {
+    public function getProfileURL() 
+    {
         return null;
     }
     
@@ -61,5 +64,4 @@ class FlickRAPI implements ServiceInterface
             'api_key' => $this->key
         );
     }
-    
 }

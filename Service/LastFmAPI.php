@@ -1,7 +1,7 @@
 <?php
-namespace Application\LifestreamBundle\Service;
+namespace Palleas\LifestreamBundle\Service;
 
-use Application\LifestreamBundle\Service\ServiceInterface;
+use Palleas\LifestreamBundle\Service\ServiceInterface;
 
 /**
  * LastFmAPI
@@ -9,8 +9,8 @@ use Application\LifestreamBundle\Service\ServiceInterface;
  * @package Application\LifestreamBundle
  * @author Romain "palleas" Pouclet <me@palleas.com>
  */
-class LastFmAPI implements ServiceInterface {
-    
+class LastFmAPI implements ServiceInterface 
+{
     const API_GATEWAY = 'http://ws.audioscrobbler.com/2.0/';
     /**
      * API Key
@@ -48,7 +48,8 @@ class LastFmAPI implements ServiceInterface {
      * @param string $username 
      * @param string $password 
      */
-    public function __construct($key, $secret, $username, $password) {
+    public function __construct($key, $secret, $username, $password) 
+    {
         $this->key = $key;
         $this->secret = $secret;
         $this->username = $username;
@@ -61,7 +62,8 @@ class LastFmAPI implements ServiceInterface {
      * @param array $options An array of options
      * @return array
      */
-    public function getRecentTracks(array $options = array()) {
+    public function getRecentTracks(array $options = array()) 
+    {
         static $method = 'user.getrecenttracks';
         
         $parameters = array_merge($options, $this->getInitialRequestParameters());
@@ -78,14 +80,16 @@ class LastFmAPI implements ServiceInterface {
     /**
      * {@inheritdoc}
      */
-    public function getRecents() {
+    public function getRecents() 
+    {
         return $this->getRecentTracks();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getProfileURL() {
+    public function getProfileURL() 
+    {
       return 'http://www.lastfm.fr/user/' . $this->username;
     }
     
@@ -97,7 +101,6 @@ class LastFmAPI implements ServiceInterface {
      */
     protected function getInitialRequestParameters($signed = false)
     {
-        
         return array(
             'user' => $this->username,
             'api_key' => $this->key

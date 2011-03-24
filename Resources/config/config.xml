@@ -5,8 +5,8 @@
     xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="lastfm.api.class">Application\LifestreamBundle\Service\LastFmAPI</parameter>
-        <parameter key="flickr.api.class">Application\LifestreamBundle\Service\FlickRAPI</parameter>
+        <parameter key="lastfm.api.class">Palleas\LifestreamBundle\Service\LastFmAPI</parameter>
+        <parameter key="flickr.api.class">Palleas\LifestreamBundle\Service\FlickRAPI</parameter>
     </parameters>
 
     <services>

@@ -1,13 +1,14 @@
 <?php
 
-namespace Application\LifestreamBundle\Controller;
+namespace Palleas\LifestreamBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller {
-
-    public function indexAction() {
+class DefaultController extends Controller 
+{
+    public function indexAction() 
+    {
         $request = $this->get('request');
 
         $response = new Response();
@@ -28,7 +29,8 @@ class DefaultController extends Controller {
         }
     }
 
-    public function showAction($service) {
+    public function showAction($service) 
+    {
 
         $handler = $this->get(sprintf('lifestream.%s.api', $service));
         $recents = $handler->getRecents();

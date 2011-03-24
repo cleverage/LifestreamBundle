@@ -1,9 +1,9 @@
 <?php
 
-namespace Application\LifestreamBundle\Service;
+namespace Palleas\LifestreamBundle\Service;
 
-interface ServiceInterface {
-  
+interface ServiceInterface 
+{
   /**
    * Returns a list of recents items from related service
    *
