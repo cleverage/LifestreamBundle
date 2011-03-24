@@ -11,28 +11,17 @@ class DefaultController extends Controller
     {
         $request = $this->get('request');
 
-        $response = new Response();
-        
-        if (!$response->isNotModified($request))
-        {
-            $response->setMaxAge(600);
-            $response->setPublic();
-            
-            return $this->render('PalleasLifestreamBundle:Default:index.html.twig', array(
+        $this->get('lifestream');
+
+        return $this->render('PalleasLifestreamBundle:Default:index.html.twig', array(
                 'services' => array('lastfm', 'flickr')
-                ), $response);
-        }
-        else
-        {
-            $response->setNotModified();
-            $response->send();
-        }
+                ));
     }
 
     public function showAction($service) 
     {
 
-        $handler = $this->get(sprintf('lifestream.%s.api', $service));
+        $handler = $this->get(sprintf('lifestream.%s', $service));
         $recents = $handler->getRecents();
 
         $response = $this->render(sprintf('PalleasLifestreamBundle:Default:show_%s.html.twig', $service), 
