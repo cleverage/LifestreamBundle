@@ -17,19 +17,19 @@ git, you can add it as submodules:
 
 Next, be sure to enable the bundle in your application kernel:
 
-  // app/autoload.php
-  $loader->registerNamespaces(array(
-      // ...
-      'Palleas'      => __DIR__.'/../src',
-      // ...
-  ));
+    // app/autoload.php
+    $loader->registerNamespaces(array(
+        // ...
+        'Palleas'      => __DIR__.'/../src',
+        // ...
+    ));
 
-  // app/AppKernel.php
-  public function registerBundles()
-  {
-      return array(
-          // ...
-          new Palleas\LifestreamBundle\PalleasLifestreamBundle(),
-          // ...
-      );
-  }
+    // app/AppKernel.php
+    public function registerBundles()
+    {
+        return array(
+            // ...
+            new Palleas\LifestreamBundle\PalleasLifestreamBundle(),
+            // ...
+        );
+    }
