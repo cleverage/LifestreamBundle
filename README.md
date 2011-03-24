@@ -41,10 +41,9 @@ Load the Cleverage_lifestream services in the DIC by simply adding the name of t
 
 Then, import the routing rules if you want to display the provided view :
 
-    # app/config/routing.yml
-    lifestream:
-        resource: '@CleverAgeLifestreamBundle/Resources/config/routing.yml'
-        prefix: /lifestream
+        lifestream:
+            resource: '@CleverAgeLifestreamBundle/Resources/config/routing.yml'
+            prefix: /lifestream
 
 At this point you can access to the lifestream with the url: `http://yoursite.local/lifestream`.
 

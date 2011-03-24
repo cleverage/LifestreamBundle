@@ -1,15 +1,25 @@
 <?php
 
-namespace CleverAge\Bundle\LifestreamBundle\Service;
+namespace CleverAge\Bundle\LifestreamBundle\ApiClient;
 
 interface ServiceInterface
 {
   /**
-   * Returns a list of recents items from related service
+   * Return 
    *
    * @return array
    */
-  public function getRecents();
+  public function get();
+
+
+  /**
+   * Use goute 
+   * @return string
+   */
+  private function fetch($url)
+  {
+    // todo
+  }
 
   /**
    * Returns profile's url (ex: http://lastfm.com/user/palleas)
