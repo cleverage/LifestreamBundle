@@ -38,7 +38,8 @@ class Lifestream
      */
     public function get($limit = 20)
     {
-
+        // Here is how to retreive params : 
+        $this->service_container->getParameter('lifestream.lastfm.username');
         return array();
     }
 }
