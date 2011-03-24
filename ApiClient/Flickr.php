@@ -19,8 +19,7 @@ class Flickr implements BaseService
         $this->userId = $user_id;
     }
 
-
-
+    
 
 
     // /**
