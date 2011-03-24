@@ -1,39 +1,27 @@
 <?php
 namespace Palleas\LifestreamBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\Extension\Extension;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\Config\FileLocator;
 
-/**
- * 
- */
-class LifestreamExtension extends Extension 
+class PalleasLifestreamExtension extends Extension
 {
-    
-    public function configLoad($config, ContainerBuilder $container) 
+    public function load(array $configs, ContainerBuilder $container)
     {
-        $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config');
-        $loader->load('config.xml');
-        
-        $this->configServices($config[0]['services'], $container);
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.xml');
     }
 
-    public function getXsdValidationBasePath() 
+    public function getAlias()
     {
-        return null;
+        return 'palleas_lifestream';
     }
 
-    public function getNamespace() 
-    {
-        return 'http://www.symfony-project.org/schema/dic/symfony';
-    }
-
-    public function getAlias() 
-    {
-        return 'lifestream';
-    }
-    
+    /**
+     * @depreciated ???
+     */
     protected function configServices(array $services, ContainerBuilder $container) 
     {
         foreach ($services as $name => $arguments) 
@@ -42,6 +30,9 @@ class LifestreamExtension extends Extension
         }
     }
     
+    /**
+     * @depreciated ???
+     */
     protected function configService($name, $arguments, ContainerBuilder $container) 
     {
         $definitionName = sprintf('lifestream.%s.api', strtolower($name));

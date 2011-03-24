@@ -18,7 +18,7 @@ class DefaultController extends Controller
             $response->setMaxAge(600);
             $response->setPublic();
             
-            return $this->render('LifestreamBundle:Default:index.html.twig', array(
+            return $this->render('PalleasLifestreamBundle:Default:index.html.twig', array(
                 'services' => array('lastfm', 'flickr')
                 ), $response);
         }
@@ -35,7 +35,7 @@ class DefaultController extends Controller
         $handler = $this->get(sprintf('lifestream.%s.api', $service));
         $recents = $handler->getRecents();
 
-        $response = $this->render(sprintf('LifestreamBundle:Default:show_%s.html.twig', $service), 
+        $response = $this->render(sprintf('PalleasLifestreamBundle:Default:show_%s.html.twig', $service), 
         array(
             'service' => $service, 
             'recents' => $recents
