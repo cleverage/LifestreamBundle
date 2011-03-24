@@ -11,6 +11,8 @@
     <services>
         <service id="lifestream" class="%lifestream.global.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="service_container" /> <!-- tmp, only for retreive the parameters bag -->
+            <!-- todo : add goute service -->
         </service>
     </services>
 </container>

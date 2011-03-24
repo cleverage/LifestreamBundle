@@ -2,14 +2,14 @@
 
 namespace CleverAge\Bundle\LifestreamBundle\ApiClient;
 
-interface ServiceInterface
+abstract class BaseService
 {
   /**
    * Return 
    *
    * @return array
    */
-  public function get();
+  abstract public function get();
 
 
   /**
@@ -26,5 +26,5 @@ interface ServiceInterface
    *
    * @return String
    */
-  public function getProfileURL();
+  abstract public function getProfileURL();
 }

@@ -10,6 +10,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $request = $this->get('request');
+
         $this->get('lifestream');
         return $this->render('CleverAgeLifestreamBundle:Default:index.html.twig', array(
             'services' => array('lastfm', 'flickr')

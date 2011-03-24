@@ -6,7 +6,7 @@ use CleverAge\Bundle\LifestreamBundle\Service\ServiceInterface;
 /**
  * The Flickr mapper class
  */
-class Flickr implements ServiceInterface
+class Flickr implements BaseService
 {
     const API_GATEWAY = 'http://api.flickr.com/services/rest';
 

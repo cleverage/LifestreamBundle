@@ -10,6 +10,7 @@ class CleverAgeLifestreamExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
+    	var_dump($container);die();
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
     }
