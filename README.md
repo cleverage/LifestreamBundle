@@ -6,14 +6,14 @@ Some bla bla.
 Installation
 -------
 
-Make sure you have a `Cleverage` dir, if not create it:
+Make sure you have a `CleverAge` dir, if not create it:
 
-    mkdir src/Cleverage
+    mkdir src/CleverAge
 
 Add the bundle to the `src/` directory. If using
 git, you can add it as submodules:
 
-    git submodule add git@github.com:Cleverage/LifestreamBundle.git src/Cleverage/LifestreamBundle
+    git submodule add git@github.com:Cleverage/LifestreamBundle.git src/CleverAge/LifestreamBundle
 
 Next, be sure to enable the bundle in your application kernel:
 
@@ -29,7 +29,7 @@ Next, be sure to enable the bundle in your application kernel:
     {
         return array(
             // ...
-            new Cleverage\LifestreamBundle\CleverageLifestreamBundle(),
+            new CleverAge\LifestreamBundle\CleverageLifestreamBundle(),
             // ...
         );
     }
@@ -37,13 +37,13 @@ Next, be sure to enable the bundle in your application kernel:
 Load the Cleverage_lifestream services in the DIC by simply adding the name of the extension :
 
         # app/config.yml
-        cleverage_lifestream: ~
+        clever_age_lifestream: ~
 
 Then, import the routing rules if you want to display the provided view :
 
     # app/config/routing.yml
     lifestream:
-        resource: '@CleverageLifestreamBundle/Resources/config/routing.yml'
+        resource: '@CleverAgeLifestreamBundle/Resources/config/routing.yml'
         prefix: /lifestream
 
 At this point you can access to the lifestream with the url: `http://yoursite.local/lifestream`.
