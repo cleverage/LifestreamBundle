@@ -5,26 +5,32 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="global.class">Palleas\LifestreamBundle\Service\Lifestream</parameter>
-        <parameter key="lastfm.class">Palleas\LifestreamBundle\Service\LastFmAPI</parameter>
-        <parameter key="flickr.class">Palleas\LifestreamBundle\Service\FlickRAPI</parameter>
+        <parameter key="lifestream.global.class">Palleas\LifestreamBundle\Service\Lifestream</parameter>
+        <parameter key="lifestream.lastfm.class">Palleas\LifestreamBundle\Service\LastFmAPI</parameter>
+        <parameter key="lifestream.flickr.class">Palleas\LifestreamBundle\Service\FlickRAPI</parameter>
 
         <!-- generic api key, plz use your own as this one may become unavailable -->
-        <parameter key="lastfm.key">b25b959554ed76058ac220b7b2e0a026</parameter>
-        <parameter key="lastfm.username">Palleas</parameter>
+        <parameter key="lifestream.lastfm.key">b25b959554ed76058ac220b7b2e0a026</parameter>
+        <parameter key="lifestream.lastfm.username">Palleas</parameter>
+
+        <parameter key="lifestream.flickr.api_key">b25b959554ed76058ac220b7b2e0a026</parameter>
+        <parameter key="lifestream.flickr.user_id">test</parameter>
     </parameters>
 
     <services>
-        <service id="lifestream" class="%global.class%">
+        <service id="lifestream" class="%lifestream.global.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
 
 
-        <service id="lifestream.lastfm" class="%lastfm.class%">
-            <argument>%lastfm.key%</argument>
-            <argument>%lastfm.username%</argument>
+        <service id="lifestream.lastfm" class="%lifestream.lastfm.class%">
+            <argument>%lifestream.lastfm.key%</argument>
+            <argument>%lifestream.lastfm.username%</argument>
         </service>
         
-        <service id="lifestream.flickr" class="%flickr.class%" />
+        <service id="lifestream.flickr" class="%lifestream.flickr.class%">
+            <argument>%lifestream.flickr.key%</argument>
+            <argument>%lifestream.flickr.user_id%</argument>
+        </service>
     </services>
 </container>

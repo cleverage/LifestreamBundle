@@ -47,3 +47,16 @@ Then, import the routing rules if you want to display the provided view :
         prefix: /lifestream
 
 At this point you can access to the lifestream with the url: `http://yoursite.local/lifestream`.
+
+
+You must provide the parameters like that.
+
+    parameters:
+        lifestream.lastfm.username: LALALA
+        lifestream.lastfm.api_key: b25b959554ed76058ac220b7b2e0a026
+        lifestream.flickr.user_id: oiezruzoeriuzer
+        lifestream.flickr.api_key: 11111
+
+TODO :
+
+- create a Configuration Class and refactor the whole service configuration process
