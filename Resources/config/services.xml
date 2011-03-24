@@ -13,7 +13,7 @@
         <parameter key="lifestream.lastfm.key">b25b959554ed76058ac220b7b2e0a026</parameter>
         <parameter key="lifestream.lastfm.username">Palleas</parameter>
 
-        <parameter key="lifestream.flickr.api_key">b25b959554ed76058ac220b7b2e0a026</parameter>
+        <parameter key="lifestream.flickr.key">b25b959554ed76058ac220b7b2e0a026</parameter>
         <parameter key="lifestream.flickr.user_id">test</parameter>
     </parameters>
 

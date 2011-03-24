@@ -38,6 +38,10 @@ class FlickRAPI implements ServiceInterface
         $results = file_get_contents($url.'?'.http_build_query($parameters));
         $tree = new \SimpleXMLElement($results);
 
+        if (!$tree->photos->photo)
+        {
+            return $photos;
+        }
         foreach ($tree->photos->photo as $photo)
         {
             $photos[] = array(
