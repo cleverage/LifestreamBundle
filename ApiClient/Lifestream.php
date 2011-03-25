@@ -36,10 +36,26 @@ class Lifestream
      * @param int $limit
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
-    public function get($limit = 20)
+    public function getAll($limit = 20)
     {
         // Here is how to retreive params : 
         $this->service_container->getParameter('lifestream.lastfm.username');
         return array();
+    }
+
+    /**
+     * @todo Use SF2 service container ?
+     * @todo Improve the config
+     * @todo Actually use the $api param
+     * 
+     * @param string $api
+     */
+    public function get($api)
+    {
+        // @todo params to enable / disable, class mapping and more
+        return new Lastfm(
+                $this->service_container->getParameter('lifestream.lastfm.api_key'),
+                $this->service_container->getParameter('lifestream.lastfm.username')
+        );
     }
 }

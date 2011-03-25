@@ -6,7 +6,7 @@ use CleverAge\Bundle\LifestreamBundle\Service\ServiceInterface;
 /**
  * LastFm API wrapper
  */
-class Lastfm implements BaseService
+class Lastfm extends BaseService
 {
     const API_GATEWAY = 'http://ws.audioscrobbler.com/2.0/';
     /**
@@ -33,6 +33,23 @@ class Lastfm implements BaseService
     {
         $this->key = $key;
         $this->username = $username;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRequestParams()
+    {
+        return array(
+            'user' => $this->username,
+            'api_key' => $this->key,
+            'method'  => 'user.getrecenttracks'
+        );
+    }
+
+    public function getRequestRootUrl()
+    {
+        return self::API_GATEWAY;
     }
 
     // /**

@@ -13,7 +13,7 @@ class DefaultController extends Controller
         $lifestream = $this->get('lifestream');
         
         return $this->render('CleverAgeLifestreamBundle:Default:index.html.twig', array(
-            'lifestream' => $lifestream->get()
+            'lifestream' => $lifestream->get('lastfm')->get()
         ));
     }
 }
