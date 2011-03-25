@@ -5,6 +5,21 @@ namespace CleverAge\Bundle\LifestreamBundle\ApiClient;
 abstract class BaseService
 {
   /**
+   *
+   * @var
+   */
+  private $goutte;
+
+  /**
+   * To be removed ?
+   * Better be in the DIC
+   */
+  public function setGoutte($goutte)
+  {
+      $this->goutte = $goutte;
+  }
+
+  /**
    * Return the normalized data
    *
    * @return array
@@ -32,7 +47,6 @@ abstract class BaseService
    */
   abstract public function getRequestRootUrl();
 
-
   /**
    * Fetch raw data from an given URL
    * Perform a GET request and return the result as a string
@@ -41,7 +55,12 @@ abstract class BaseService
    */
   private function fetch($url)
   {
-    // todo
+    $client = $this->goutte->getNamedClient('curl');
+    $crawler = $client->request('GET', $url);
+
+    $response = $client->getResponse();
+    
+    return $response->getContent();
   }
 
   /**

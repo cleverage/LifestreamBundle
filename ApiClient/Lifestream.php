@@ -53,9 +53,13 @@ class Lifestream
     public function get($api)
     {
         // @todo params to enable / disable, class mapping and more
-        return new Lastfm(
+        $last = new Lastfm(
                 $this->service_container->getParameter('lifestream.lastfm.api_key'),
                 $this->service_container->getParameter('lifestream.lastfm.username')
         );
+
+        $last->setGoutte($this->service_container->get('goutte'));
+
+        return $last;
     }
 }
