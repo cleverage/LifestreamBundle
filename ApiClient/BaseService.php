@@ -6,7 +6,7 @@ abstract class BaseService
 {
   /**
    *
-   * @var
+   * @var \Sonata\GoutteBundle\Manager
    */
   private $goutte;
 
@@ -14,7 +14,7 @@ abstract class BaseService
    * To be removed ?
    * Better be in the DIC
    */
-  public function setGoutte($goutte)
+  public function setGoutte(\Sonata\GoutteBundle\Manager $goutte)
   {
       $this->goutte = $goutte;
   }
@@ -29,8 +29,8 @@ abstract class BaseService
       $url = $this->getDataUrl();
 
       $data = $this->fetch($url);
-
-      var_dump($data);
+      
+      // Todo : read the data and return the array !
   }
 
   /**

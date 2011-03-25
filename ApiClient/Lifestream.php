@@ -32,14 +32,12 @@ class Lifestream
     }
 
     /**
-     * @todo  Must return the N last event stored
+     * @todo  Must return the N last event stored, use $this->get() on each ? no
      * @param int $limit
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
     public function getAll($limit = 20)
     {
-        // Here is how to retreive params : 
-        $this->service_container->getParameter('lifestream.lastfm.username');
         return array();
     }
 
