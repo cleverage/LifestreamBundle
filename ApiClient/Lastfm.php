@@ -9,6 +9,9 @@ use CleverAge\Bundle\LifestreamBundle\Service\ServiceInterface;
 class Lastfm extends BaseService
 {
     const API_GATEWAY = 'http://ws.audioscrobbler.com/2.0/';
+
+    const TYPE = 'lastfm';
+    
     /**
      * API Key
      *
@@ -52,34 +55,7 @@ class Lastfm extends BaseService
         return self::API_GATEWAY;
     }
 
-    // /**
-    //  * Returns recent played tracks
-    //  *
-    //  * @param array $options An array of options
-    //  * @return array
-    //  */
-    // public function getRecentTracks(array $options = array())
-    // {
-    //     static $method = 'user.getrecenttracks';
-
-    //     $parameters = array_merge($options, $this->getInitialRequestParameters());
-    //     $parameters['method'] = $method;
-
-    //     $request = sprintf('%s?%s', self::API_GATEWAY, http_build_query($parameters));
-
-    //     $results = file_get_contents($request);
-    //     $normalizer = new LastFmTrackListNormalizer();
-
-    //     return $normalizer->normalize(new \SimpleXMLElement($results), 'array', null);
-    // }
-
-    // /**
-    //  * {@inheritdoc}
-    //  */
-    // public function getRecents()
-    // {
-    //     return $this->getRecentTracks();
-    // }
+    
 
     /**
      * {@inheritdoc}
@@ -89,17 +65,47 @@ class Lastfm extends BaseService
       return 'http://www.lastfm.fr/user/' . $this->username;
     }
 
-    // /**
-    //  * Returns an array of request's  mandatory parameters
-    //  *
-    //  * @param boolean $signed
-    //  * @return array
-    //  */
-    // protected function getInitialRequestParameters($signed = false)
-    // {
-    //     return array(
-    //         'user' => $this->username,
-    //         'api_key' => $this->key
-    //     );
-    // }
+    /**
+     * {@inheritdoc}
+     */
+    public function denormalize(array $data)
+    {
+        $objects = array();
+        
+        if (isset($data['recenttracks']) && isset($data['recenttracks']['track']))
+        {
+          for ($i = 0; $i < 10; $i++)
+          {
+              if (isset($data['recenttracks']['track'][$i]) && is_array($data['recenttracks']['track'][$i]))
+              {
+                  $objects[] = $this->denormalizeObject($data['recenttracks']['track'][$i]);
+              }
+          }
+        }
+        
+        return $objects;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function denormalizeObject(array $data)
+    {
+        if ( isset($data['artist'])
+            && isset($data['name'])
+            && isset($data['url'])
+            && isset($data['date']) )
+        {
+            return $this->createEvent(
+                    $data['name'].' - '.$data['artist'],
+                    $data['url'],
+                    new \DateTime($data['date']),
+                    self::TYPE
+                    );
+        }
+        else
+        {
+            throw new \Exception("Can't denormalize the array, missing mandatory field.");
+        }
+    }
 }

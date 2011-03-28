@@ -11,6 +11,8 @@ class DefaultController extends Controller
     {
         $request = $this->get('request');
         $lifestream = $this->get('lifestream');
+
+        var_dump($lifestream->get('lastfm')->get());
         
         return $this->render('CleverAgeLifestreamBundle:Default:index.html.twig', array(
             'lifestream' => $lifestream->get('lastfm')->get()

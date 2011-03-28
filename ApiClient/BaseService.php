@@ -26,11 +26,28 @@ abstract class BaseService
    */
   public function get()
   {
-      $url = $this->getDataUrl();
+      $data = $this->fetch( $this->getDataUrl() );
 
-      $data = $this->fetch($url);
-      
-      // Todo : read the data and return the array !
+      if (!empty($data))
+      {
+          /**
+           * @todo : use the DIC to import and configure the Serializer
+           */
+          $this->serializer = new \Symfony\Component\Serializer\Serializer();
+          $this->serializer->setEncoder('xml', new \Symfony\Component\Serializer\Encoder\XmlEncoder());
+          $this->serializer->setEncoder('json', new \Symfony\Component\Serializer\Encoder\JsonEncoder());
+
+          $decoded_data = $this->serializer->decode($data, $this->getFormat());
+
+          if (is_array($decoded_data))
+          {
+              return $this->denormalize($decoded_data);
+          }
+          else
+          {
+              throw new \Exception("Can't read the collection.");
+          }
+      }
   }
 
   /**
@@ -39,6 +56,20 @@ abstract class BaseService
    * @return array
    */
   abstract public function getRequestParams();
+
+  /**
+   * Create the LifestreamEvent object from a data array
+   *
+   * @return \CleverAge\Bundle\LifestreamBundle\Entity\LifestreamEvent
+   */
+  abstract public function denormalizeObject(array $data);
+
+  /**
+   * Create the LifestreamEvent object's from a collection data array
+   *
+   * @return array of \CleverAge\Bundle\LifestreamBundle\Entity\LifestreamEvent
+   */
+  abstract public function denormalize(array $data);
 
   /**
    * Return the request root url
@@ -81,6 +112,27 @@ abstract class BaseService
     {
         return $this->getRequestRootUrl();
     }
+  }
+
+  /**
+   * Return the format of the server API payload
+   * 
+   * @return string
+   */
+  public function getFormat()
+  {
+      return 'xml';
+  }
+
+  public function createEvent($title, $url, \DateTime $date, $type)
+  {
+      $object = new \CleverAge\Bundle\LifestreamBundle\Entity\LifestreamEvent();
+      $object->setEventAt($date);
+      $object->setTitle($title);
+      $object->setUrl($url);
+      $object->setType($type);
+
+      return $object;
   }
 
   /**
