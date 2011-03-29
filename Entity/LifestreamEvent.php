@@ -154,4 +154,22 @@ class LifestreamEvent
     {
         $this->created_at = new \DateTime('now');
     }
+
+    /**
+     * Test if the event already exist in database
+     * Assume all the fields are filed
+     * @todo   use it to prevent doctrine persist
+     * @return bool
+     */
+    public function isNew(\Doctrine\ORM\EntityManager $em)
+    {
+        $query = $em->createQuery("SELECT COUNT(e.id) as event_nb FROM CleverAgeLifestreamBundle:LifestreamEvent e WHERE e.type = ?1 AND e.event_at = ?2 AND e.url = ?3");
+        $query->setParameters(array(
+            '1' => $this->getType(),
+            '2' => $this->getEventAt()->format('Y-m-d H:i:s'),
+            '3' => $this->getUrl(),
+        ));
+
+        return $query->getResult(\Doctrine\ORM\AbstractQuery::HYDRATE_SINGLE_SCALAR) == 0;
+    }
 }

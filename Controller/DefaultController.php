@@ -15,9 +15,10 @@ class DefaultController extends Controller
 
         foreach ($lifestream->get('lastfm')->fetch() as $event)
         {
-        $em->persist(
-            $event
-                );
+            if ($event->isNew($em)) // That's not is new in a Doctrine1 way
+            {
+                $em->persist( $event );
+            }
         }
         $em->flush();
 
