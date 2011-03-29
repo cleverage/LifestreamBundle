@@ -2,6 +2,8 @@
 namespace CleverAge\Bundle\LifestreamBundle\Entity;
 
 /**
+ * @orm:Table(name="cleverage_lifestream_event")
+ * @orm:HasLifecycleCallbacks
  * @orm:Entity
  * @orm:Options()
  */
@@ -22,13 +24,13 @@ class LifestreamEvent
     protected $title;
 
     /**
-     * @orm:Column(type="string", length="255")
+     * @orm:Column(type="string", length="255", nullable=false)
      * @var string $url
      */
     protected $url = null;
     
     /**
-     * @orm:Column(type="string", length="20")
+     * @orm:Column(type="string", length="20", nullable=false)
      * @var string $type
      */
     protected $type;
@@ -40,7 +42,7 @@ class LifestreamEvent
     protected $created_at;
 
     /**
-     * @orm:Column(type="datetime")
+     * @orm:Column(type="datetime", nullable=false)
      * @var string $event_at
      */
     protected $event_at;
@@ -116,16 +118,6 @@ class LifestreamEvent
     }
 
     /**
-     * Set created_at
-     *
-     * @param datetime $createdAt
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->created_at = $createdAt;
-    }
-
-    /**
      * Get created_at
      *
      * @return datetime $createdAt
@@ -153,5 +145,13 @@ class LifestreamEvent
     public function getEventAt()
     {
         return $this->event_at;
+    }
+
+    /**
+     * @orm:PrePersist
+     */
+    public function prePersist()
+    {
+        $this->created_at = new \DateTime('now');
     }
 }

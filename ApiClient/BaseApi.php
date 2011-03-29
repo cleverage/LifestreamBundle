@@ -66,7 +66,7 @@ abstract class BaseApi
     abstract public function denormalizeObject(array $data);
 
     /**
-     * Create the LifestreamEvent object's from a collection data array
+     * Create the LifestreamEvent object's Collection from a collection data array
      * Using self::denormalizeObject.
      * See Lastfm ApiClient for example.
      *

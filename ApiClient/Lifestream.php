@@ -32,7 +32,7 @@ class Lifestream
     }
 
     /**
-     * @todo  Must return the N last event stored, use $this->get() on each ? no
+     * @todo  Must return the N last event stored, use $this->fetch() & persist on each ? no
      * @param int $limit
      * @return \Doctrine\Common\Collections\ArrayCollection
      */

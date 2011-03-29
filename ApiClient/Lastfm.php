@@ -81,7 +81,11 @@ class Lastfm extends BaseApi
           {
               if (isset($data['recenttracks']['track'][$i]) && is_array($data['recenttracks']['track'][$i]))
               {
-                  $objects[] = $this->denormalizeObject($data['recenttracks']['track'][$i]);
+                  $event = $this->denormalizeObject($data['recenttracks']['track'][$i]);
+                  if ($event && ($event instanceof \CleverAge\Bundle\LifestreamBundle\Entity\LifestreamEvent))
+                  {
+                      $objects[] = $event;
+                  }
               }
           }
         }
