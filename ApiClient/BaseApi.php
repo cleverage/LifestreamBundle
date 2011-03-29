@@ -2,7 +2,7 @@
 
 namespace CleverAge\Bundle\LifestreamBundle\ApiClient;
 
-abstract class BaseService
+abstract class BaseApi
 {
   /**
    *
@@ -26,7 +26,9 @@ abstract class BaseService
    */
   public function get()
   {
-      $data = $this->fetch( $this->getDataUrl() );
+      //$data = $this->fetch( $this->getDataUrl() );
+
+      $data = \file_get_contents('/home/dalexandre/Bureau/mobman02.xml');
 
       if (!empty($data))
       {

@@ -6,7 +6,7 @@ use CleverAge\Bundle\LifestreamBundle\Service\ServiceInterface;
 /**
  * LastFm API wrapper
  */
-class Lastfm extends BaseService
+class Lastfm extends BaseApi
 {
     const API_GATEWAY = 'http://ws.audioscrobbler.com/2.0/';
 
