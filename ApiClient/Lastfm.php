@@ -49,7 +49,10 @@ class Lastfm extends BaseApi
             'method'  => 'user.getrecenttracks'
         );
     }
-
+    
+    /**
+     * {@inheritdoc}
+     */
     public function getRequestRootUrl()
     {
         return self::API_GATEWAY;
