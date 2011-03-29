@@ -23,9 +23,9 @@ abstract class BaseApi
      *
      * @return array
      */
-    public function get()
+    public function fetch()
     {
-        //$data = $this->fetch( $this->getDataUrl() );
+        //$data = $this->fetchData( $this->getDataUrl() );
 
         $data = \file_get_contents('/home/dalexandre/Bureau/mobman02.xml');
 
@@ -87,7 +87,7 @@ abstract class BaseApi
      *
      * @return string
      */
-    private function fetch($url)
+    private function fetchData($url)
     {
         $client     = $this->goutte->getNamedClient('curl');
         $crawler    = $client->request('GET', $url);
