@@ -58,14 +58,20 @@ class Lastfm extends BaseApi
         return self::API_GATEWAY;
     }
 
-    
-
     /**
      * {@inheritdoc}
      */
     public function getProfileURL()
     {
       return 'http://www.lastfm.fr/user/' . $this->username;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getType()
+    {
+      return self::TYPE;
     }
 
     /**
@@ -107,7 +113,7 @@ class Lastfm extends BaseApi
                     $data['name'].' - '.$data['artist'],
                     $data['url'],
                     new \DateTime($data['date']),
-                    self::TYPE
+                    $this->getType()
                     );
         }
         else

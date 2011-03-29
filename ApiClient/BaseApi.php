@@ -5,10 +5,13 @@ namespace CleverAge\Bundle\LifestreamBundle\ApiClient;
 abstract class BaseApi
 {
     /**
-     *
      * @var \Sonata\GoutteBundle\Manager
      */
     private $goutte;
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    private $em;
 
     /**
      * @todo We must use the DIC in a more clever way
@@ -16,6 +19,10 @@ abstract class BaseApi
     public function setGoutte(\Sonata\GoutteBundle\Manager $goutte)
     {
         $this->goutte = $goutte;
+    }
+    public function setEntityManager(\Doctrine\ORM\EntityManager $em)
+    {
+        $this->em = $em;
     }
 
     /**
@@ -25,9 +32,7 @@ abstract class BaseApi
      */
     public function fetch()
     {
-        //$data = $this->fetchData( $this->getDataUrl() );
-
-        $data = \file_get_contents('/home/dalexandre/Bureau/mobman02.xml');
+        $data = $this->fetchData( $this->getDataUrl() );
 
         if (!empty($data))
         {
@@ -150,9 +155,29 @@ abstract class BaseApi
     }
 
     /**
+     * Return an ArrayCollection of LifestreamEvent for the specific type, ordered by date
+     * @param int $limit The max amount of event to retrieve
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function get($limit = 20)
+    {
+        $query = $this->em->createQuery("SELECT e FROM CleverAgeLifestreamBundle:LifestreamEvent e WHERE e.type = ?1 ORDER BY e.event_at DESC");
+        $query->setParameter('1', $this->getType());
+
+        return $query->getResult();
+    }
+
+    /**
      * Returns profile's url (ex: http://lastfm.com/user/palleas)
      *
      * @return String
      */
     abstract public function getProfileURL();
+
+    /**
+     * Return the type of the Event API,
+     * must be unique string
+     * @return string
+     */
+    abstract public function getType();
 }

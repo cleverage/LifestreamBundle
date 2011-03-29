@@ -57,6 +57,7 @@ class Lifestream
         );
 
         $last->setGoutte($this->service_container->get('goutte'));
+        $last->setEntityManager($this->em);
 
         return $last;
     }
