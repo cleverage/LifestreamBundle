@@ -36,8 +36,11 @@ class Lifestream
      * @param int $limit
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
-    public function getAll($limit = 20)
+    public function get($limit = 20)
     {
-        return array();
+        $query = $this->em->createQuery("SELECT e FROM CleverAgeLifestream:LifestreamEvent e ORDER BY e.event_at DESC");
+        $query->setMaxResults($limit);
+
+        return $query->getResult();
     }
 }

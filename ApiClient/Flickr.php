@@ -1,8 +1,6 @@
 <?php
 namespace CleverAge\Bundle\LifestreamBundle\ApiClient;
 
-use CleverAge\Bundle\LifestreamBundle\Service\ServiceInterface;
-
 /**
  * The Flickr mapper class
  */
