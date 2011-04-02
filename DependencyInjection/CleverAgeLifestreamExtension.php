@@ -14,7 +14,7 @@ class CleverAgeLifestreamExtension extends Extension
         $processor      = new Processor();
         $configuration  = new Configuration();
         $config         = $processor->process($configuration->getConfigTree(), $configs);
-
+        
         // The main manager class
         $definition = new Definition($config['class']);
         $services_names = array();
