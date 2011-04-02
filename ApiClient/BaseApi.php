@@ -14,7 +14,7 @@ abstract class BaseApi
     private $em;
 
     /**
-     * @todo We must use the DIC in a more clever way
+     * Services setted by the DIC
      */
     public function setGoutte(\Sonata\GoutteBundle\Manager $goutte)
     {

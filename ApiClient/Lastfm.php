@@ -17,7 +17,7 @@ class Lastfm extends BaseApi
      *
      * @var string
      */
-    protected $key;
+    protected $api_key;
 
     /**
      * LastFM account username
@@ -29,13 +29,12 @@ class Lastfm extends BaseApi
     /**
      * Constructor
      *
-     * @param string $key
-     * @param string $username
+     * @param array $params
      */
-    public function __construct($key, $username)
+    public function __construct($params)
     {
-        $this->key = $key;
-        $this->username = $username;
+        $this->api_key = $params['api_key'];
+        $this->username = $params['username'];
     }
 
     /**
@@ -45,7 +44,7 @@ class Lastfm extends BaseApi
     {
         return array(
             'user' => $this->username,
-            'api_key' => $this->key,
+            'api_key' => $this->api_key,
             'method'  => 'user.getrecenttracks'
         );
     }
