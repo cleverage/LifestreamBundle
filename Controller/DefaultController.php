@@ -9,11 +9,11 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $lifestream = $this->get('lifestream');
+        $lifestream = $this->get('lifestream.lastfm');
 
         $em = $this->get('doctrine.orm.entity_manager');
 
-        foreach ($lifestream->get('lastfm')->fetch() as $event)
+        foreach ($lifestream->fetch() as $event)
         {
             if ($event->isNew($em)) // That's not is new in a Doctrine1 way
             {
@@ -23,7 +23,7 @@ class DefaultController extends Controller
         $em->flush();
         
         return $this->render('CleverAgeLifestream:Default:index.html.twig', array(
-            'lifestream' => $lifestream->get('lastfm')->get()
+            'lifestream' => $lifestream->get()
         ));
     }
 }
