@@ -41,15 +41,22 @@ Then, import the routing rules if you want to display the provided view :
 
 At this point you can access to the lifestream with the url: `http://yoursite.local/lifestream`.
 
+Configuration
+-------
 
-You must provide the parameters like that.
+In your config.yml:
 
-    parameters:
-        lifestream.lastfm.username: LALALA
-        lifestream.lastfm.api_key: b25b959554ed76058ac220b7b2e0a026
-        lifestream.flickr.user_id: oiezruzoeriuzer
-        lifestream.flickr.api_key: 11111
+    clever_age_lifestream:
+        apis:
+            lastfm:
+                class: CleverAge\Bundle\LifestreamBundle\ApiClient\Lastfm
+                config:
+                  username: XXX
+                  api_key:  b25b959554ed76058ac220b7b2e0a026
 
-TODO :
+You can add as many "apis" node as you like.
 
-- create a Configuration Class and refactor the whole service configuration process
+Todo
+-------
+
+- Work on the Flickr API
