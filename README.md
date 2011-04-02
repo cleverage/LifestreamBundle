@@ -1,14 +1,8 @@
 LifestreamBundle for Symfony2
 =============
 
-Some bla bla.
-
 Installation
 -------
-
-Make sure you have a `CleverAge` dir, if not create it:
-
-    mkdir src/CleverAge
 
 Add the bundle to the `src/` directory. If using
 git, you can add it as submodules:

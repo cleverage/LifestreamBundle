@@ -5,13 +5,15 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\Config\Definition\Processor;
 
 class CleverAgeLifestreamExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
-        // Merge all the configs into one.
-        $config = call_user_func_array('array_merge_recursive', $configs);
+        $processor      = new Processor();
+        $configuration  = new Configuration();
+        $config         = $processor->process($configuration->getConfigTree(), $configs);
 
         // The main manager class
         $definition = new Definition($config['class']);
