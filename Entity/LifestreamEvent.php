@@ -163,7 +163,7 @@ class LifestreamEvent
      */
     public function isNew(\Doctrine\ORM\EntityManager $em)
     {
-        $query = $em->createQuery("SELECT COUNT(e.id) as event_nb FROM CleverAgeLifestream:LifestreamEvent e WHERE e.type = ?1 AND e.event_at = ?2 AND e.url = ?3");
+        $query = $em->createQuery("SELECT COUNT(e.id) as event_nb FROM CleverAgeLifestreamBundle:LifestreamEvent e WHERE e.type = ?1 AND e.event_at = ?2 AND e.url = ?3");
         $query->setParameters(array(
             '1' => $this->getType(),
             '2' => $this->getEventAt()->format('Y-m-d H:i:s'),

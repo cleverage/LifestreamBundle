@@ -161,7 +161,7 @@ abstract class BaseApi
      */
     public function get($limit = 20)
     {
-        $query = $this->em->createQuery("SELECT e FROM CleverAgeLifestream:LifestreamEvent e WHERE e.type = ?1 ORDER BY e.event_at DESC");
+        $query = $this->em->createQuery("SELECT e FROM CleverAgeLifestreamBundle:LifestreamEvent e WHERE e.type = ?1 ORDER BY e.event_at DESC");
         $query->setMaxResults($limit);
         $query->setParameter('1', $this->getType());
 

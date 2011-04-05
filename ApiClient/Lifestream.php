@@ -38,7 +38,7 @@ class Lifestream
      */
     public function get($limit = 20)
     {
-        $query = $this->em->createQuery("SELECT e FROM CleverAgeLifestream:LifestreamEvent e ORDER BY e.event_at DESC");
+        $query = $this->em->createQuery("SELECT e FROM CleverAgeLifestreamBundle:LifestreamEvent e ORDER BY e.event_at DESC");
         $query->setMaxResults($limit);
 
         return $query->getResult();
