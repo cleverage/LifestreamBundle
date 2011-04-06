@@ -36,6 +36,14 @@ class Configuration
                         ->children()
                             ->scalarNode('class')
                                 ->isRequired()
+                                ->validate()
+                                    ->ifTrue(function($v)
+                                        {
+                                            $t = new \ReflectionClass($v);
+                                            return ($t->getParentClass() === 'CleverAge\Bundle\LifestreamBundle\ApiClient\BaseApi');
+                                        })
+                                    ->thenInvalid('All your API class must extend CleverAge\Bundle\LifestreamBundle\ApiClient\BaseApi.')
+                                ->end()
                             ->end()
                             ->arrayNode('config')
                                 ->useAttributeAsKey('id')
