@@ -107,9 +107,9 @@ class Lastfm extends BaseApi
             && isset($data['date']) )
         {
             return $this->createEvent(
-                    $data['name'].' - '.$data['artist'],
+                    $data['name'].' - '.$data['artist']['#'],
                     $data['url'],
-                    new \DateTime($data['date']),
+                    new \DateTime($data['date']['#']),
                     $this->getType()
                     );
         }
