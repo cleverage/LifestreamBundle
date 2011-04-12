@@ -29,7 +29,6 @@ class CleverAgeLifestreamExtension extends Extension
 
                 $api_definition->setArguments( array(0 => $configuration) );
                 $api_definition->addMethodCall('setEntityManager', array(0 => new Reference('doctrine.orm.entity_manager')));
-                $api_definition->addMethodCall('setGoutte', array(0 => new Reference('goutte')));
 
                 $container->setDefinition( sprintf('lifestream.%s', $name), $api_definition);
                 $services_names[] = sprintf('lifestream.%s', $name);

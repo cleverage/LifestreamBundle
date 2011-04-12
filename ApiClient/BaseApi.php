@@ -5,10 +5,6 @@ namespace CleverAge\Bundle\LifestreamBundle\ApiClient;
 abstract class BaseApi
 {
     /**
-     * @var \Sonata\GoutteBundle\Manager
-     */
-    private $goutte;
-    /**
      * @var \Doctrine\ORM\EntityManager
      */
     private $em;
@@ -16,10 +12,6 @@ abstract class BaseApi
     /**
      * Services setted by the DIC
      */
-    public function setGoutte(\Sonata\GoutteBundle\Manager $goutte)
-    {
-        $this->goutte = $goutte;
-    }
     public function setEntityManager(\Doctrine\ORM\EntityManager $em)
     {
         $this->em = $em;
@@ -94,10 +86,11 @@ abstract class BaseApi
      */
     private function fetchData($url)
     {
-        $client     = $this->goutte->getNamedClient('curl');
-        $crawler    = $client->request('GET', $url);
+        $request = new \Buzz\Message\Request('GET', $url);
+        $response = new \Buzz\Message\Response();
 
-        $response   = $client->getResponse();
+        $client = new \Buzz\Client\Curl();
+        $client->send($request, $response);
 
         return $response->getContent();
     }
