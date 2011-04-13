@@ -86,3 +86,4 @@ Todo
 - Provide methods for statistic display
 - Provide default view for all the default services
 - MOAR DEFAULT SERVICE!!11
+- Find a way to get the EntityManager inside an Entity (for the isNew() method call)

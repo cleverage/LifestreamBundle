@@ -35,7 +35,11 @@ class CleverAgeLifestreamExtension extends Extension
             }
         }
 
-        $definition->setArguments(array(0 => new Reference('doctrine.orm.entity_manager'), 1 => $services_names));
+        $definition->setArguments(array(
+            0 => new Reference('doctrine.orm.entity_manager'),
+            1 => new Reference('service_container'),
+            2 => $services_names
+        ));
         $container->setDefinition('lifestream', $definition);
     }
 }

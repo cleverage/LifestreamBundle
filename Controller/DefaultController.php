@@ -9,18 +9,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $lifestream = $this->get('lifestream.twitter');
-
-        $em = $this->get('doctrine.orm.entity_manager');
-
-        foreach ($lifestream->fetch() as $event)
-        {
-            if ($event->isNew($em)) // That's not is new in a Doctrine1 way
-            {
-                $em->persist( $event );
-            }
-        }
-        $em->flush();
+        $this->get('lifestream')->fetchAll();
         
         return $this->render('CleverAgeLifestreamBundle:Default:index.html.twig', array(
             'lifestream' => $this->get('lifestream')->get()
