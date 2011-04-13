@@ -9,7 +9,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $lifestream = $this->get('lifestream.lastfm');
+        $lifestream = $this->get('lifestream.twitter');
 
         $em = $this->get('doctrine.orm.entity_manager');
 

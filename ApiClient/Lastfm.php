@@ -101,10 +101,10 @@ class Lastfm extends BaseApi
      */
     public function denormalizeObject(array $data)
     {
-        if ( isset($data['artist'])
+        if ( isset($data['artist']['#'])
             && isset($data['name'])
             && isset($data['url'])
-            && isset($data['date']) )
+            && isset($data['date']['#']) )
         {
             return $this->createEvent(
                     $data['name'].' - '.$data['artist']['#'],
@@ -115,7 +115,7 @@ class Lastfm extends BaseApi
         }
         else
         {
-            throw new \Exception("Can't denormalize the array, missing mandatory field.");
+            return false;
         }
     }
 }

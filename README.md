@@ -67,7 +67,11 @@ In your config.yml:
                 class: CleverAge\Bundle\LifestreamBundle\ApiClient\Lastfm
                 config:
                     username: USERNAME
-                    api_key:  b25b959554ed76058ac220b7b2e0a026
+                    api_key:  YOURKEY
+            twitter:
+                class: CleverAge\Bundle\LifestreamBundle\ApiClient\Twitter
+                config:
+                  username: USERNAME
 
 You can add as many "apis" node as you like. The "config" node contain parameters send to the constructor of the Api class.
 All your Api class must extend CleverAge\Bundle\LifestreamBundle\ApiClient\BaseApi.
