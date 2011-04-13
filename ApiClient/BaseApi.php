@@ -92,6 +92,11 @@ abstract class BaseApi
         $client = new \Buzz\Client\Curl();
         $client->send($request, $response);
 
+        if ($response->getStatusCode() != 200)
+        {
+            throw new \UnexpectedValueException("Can't fetch data, wrong status code returned.");
+        }
+
         return $response->getContent();
     }
 
