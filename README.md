@@ -87,3 +87,4 @@ Todo
 - Provide default view for all the default services
 - MOAR DEFAULT SERVICE!!11
 - Find a way to get the EntityManager inside an Entity (for the isNew() method call)
+- Twig helper to get the picto of each API's inside the view

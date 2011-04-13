@@ -6,7 +6,7 @@
 
     <ul>
     {% for event in lifestream %}
-         <li>{{ event.title }}</a></li>
+         <li>{{ event.eventAt|date('Y-m-d H:i:s') }} - {{ event.title }}</li>
     {% endfor %}
     </ul>
 
